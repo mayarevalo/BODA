@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mayra & Gabi · 13.03.2027</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&display=swap');
+:root{--bg:#f8f6ed;--paper:#fffdf8;--ink:#26251f;--olive:#78845b;--olive-dark:#586542;--muted:#6e6b62;--line:#d9dccb;--gold:#b39456}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden}
+#app{min-height:100vh;background:var(--bg);position:relative}
+
+/* Ramas de olivo laterales decorativas */
+.olive-left, .olive-right{position:fixed;top:0;bottom:0;width:120px;pointer-events:none;z-index:2;opacity:0.35;background-repeat:repeat-y;background-size:contain}
+.olive-left{left:0;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 800"><path d="M10,0 Q40,200 10,400 Q40,600 10,800" fill="none" stroke="%2378845b" stroke-width="2"/><ellipse cx="20" cy="50" rx="12" ry="5" fill="%2378845b" transform="rotate(-30 20 50)"/><ellipse cx="5" cy="120" rx="10" ry="4" fill="%23586542" transform="rotate(20 5 120)"/><ellipse cx="25" cy="220" rx="11" ry="4" fill="%2378845b" transform="rotate(-15 25 220)"/><ellipse cx="8" cy="310" rx="12" ry="5" fill="%23586542" transform="rotate(35 8 310)"/><ellipse cx="22" cy="420" rx="10" ry="4" fill="%2378845b" transform="rotate(-25 22 420)"/><ellipse cx="6" cy="510" rx="12" ry="5" fill="%23586542" transform="rotate(15 6 510)"/><ellipse cx="24" cy="620" rx="11" ry="4" fill="%2378845b" transform="rotate(-40 24 620)"/><ellipse cx="10" cy="720" rx="10" ry="4" fill="%23586542" transform="rotate(25 10 720)"/></svg>');}
+.olive-right{right:0;transform:scaleX(-1);background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 800"><path d="M10,0 Q40,200 10,400 Q40,600 10,800" fill="none" stroke="%2378845b" stroke-width="2"/><ellipse cx="20" cy="50" rx="12" ry="5" fill="%2378845b" transform="rotate(-30 20 50)"/><ellipse cx="5" cy="120" rx="10" ry="4" fill="%23586542" transform="rotate(20 5 120)"/><ellipse cx="25" cy="220" rx="11" ry="4" fill="%2378845b" transform="rotate(-15 25 220)"/><ellipse cx="8" cy="310" rx="12" ry="5" fill="%23586542" transform="rotate(35 8 310)"/><ellipse cx="22" cy="420" rx="10" ry="4" fill="%2378845b" transform="rotate(-25 22 420)"/><ellipse cx="6" cy="510" rx="12" ry="5" fill="%23586542" transform="rotate(15 6 510)"/><ellipse cx="24" cy="620" rx="11" ry="4" fill="%2378845b" transform="rotate(-40 24 620)"/><ellipse cx="10" cy="720" rx="10" ry="4" fill="%23586542" transform="rotate(25 10 720)"/></svg>');}
+
+.hero{min-height:90vh;display:grid;place-items:center;text-align:center;padding:60px 24px;position:relative}
+.hero-content{max-width:850px;position:relative;z-index:3}
+.monogram{font-family:'Allura',cursive;font-size:clamp(80px,14vw,115px);line-height:0.9;margin-bottom:18px;color:var(--olive-dark)}
+.monogram .amp{font-size:0.55em;vertical-align:middle;color:var(--gold);display:inline-block;margin:0 4px}
+.welcome{font-size:clamp(22px,3.5vw,28px);margin:0 0 32px;color:var(--muted);letter-spacing:1px}
+.date-script{font-family:'Allura',cursive;font-size:clamp(44px,7vw,62px);color:var(--olive);margin-bottom:30px}
+.wait{font-family:'Allura',cursive;font-size:clamp(38px,6vw,52px);margin-top:36px;color:var(--olive-dark)}
+.confirm{font-size:18px;margin-top:24px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+
+.nav{position:sticky;top:0;background:#f8f6edee;border-bottom:1px solid var(--line);backdrop-filter:blur(8px);display:flex;justify-content:center;gap:32px;padding:16px;z-index:10}
+.nav a{font:13px 'Cormorant Garamond',Georgia,serif;letter-spacing:2px;text-transform:uppercase;color:var(--olive-dark);text-decoration:none;transition:color 0.2s}
+.nav a:hover{color:var(--gold)}
+
+.section{max-width:980px;margin:auto;padding:84px 24px;position:relative;z-index:3}
+.section h2{text-align:center;font-size:clamp(36px,6vw,48px);font-weight:400;margin:0 0 12px;color:var(--olive-dark)}
+.sub{text-align:center;color:var(--muted);font-size:clamp(18px,2.5vw,21px);line-height:1.6;margin:0 auto 42px;max-width:720px}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.card{border:1px solid var(--line);padding:42px 32px;background:var(--paper);text-align:center;box-shadow:0 14px 35px rgba(78,88,57,0.06);border-radius:6px;transition:transform 0.3s ease}
+.card:hover{transform:translateY(-4px)}
+.card-icon{font-size:36px;margin-bottom:14px;color:var(--olive)}
+.label{font-size:15px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:600}
+.card h3{font-size:clamp(26px,4vw,34px);font-weight:500;margin:12px 0;color:var(--olive-dark)}
+.address{font-size:clamp(18px,2.5vw,20px);line-height:1.6;color:var(--muted);margin-bottom:20px}
+.link{display:inline-block;padding:11px 24px;border:1px solid var(--olive);border-radius:28px;color:var(--olive-dark);text-decoration:none;font-size:16px;letter-spacing:1px;transition:all 0.2s}
+.link:hover{background:var(--olive-dark);color:#fff;border-color:var(--olive-dark)}
+
+.food-form{max-width:640px;margin:auto;background:var(--paper);border:1px solid var(--line);padding:40px;box-shadow:0 14px 35px rgba(78,88,57,0.06);border-radius:6px}
+.food-form label{display:block;margin:0 0 8px;color:var(--olive-dark);font-size:19px;font-weight:500}
+.food-form input,.food-form select,.food-form textarea{display:block;width:100%;padding:14px 16px;margin-bottom:24px;border:1px solid var(--line);background:#fffdf8;font:18px 'Cormorant Garamond',Georgia,serif;color:var(--ink);border-radius:4px}
+.food-form button{width:100%;padding:15px;border:none;background:var(--olive-dark);color:#fffdf8;font-size:19px;letter-spacing:1px;border-radius:28px;cursor:pointer;transition:background 0.2s}
+.food-form button:hover{background:#465234}
+
+/* Dress Code mejorado con imagen HD integrada */
+.dress-image-container{max-width:760px;margin:0 auto 32px;border-radius:8px;overflow:hidden;border:1px solid var(--line);box-shadow:0 16px 40px rgba(78,88,57,0.08);background:var(--paper)}
+.dress-image-container img{width:100%;height:auto;display:block}
+
+.color-restriction{background:var(--paper);border:1px solid var(--line);padding:32px;border-radius:6px;margin-top:28px;text-align:center;max-width:760px;margin-left:auto;margin-right:auto}
+.color-restriction h4{font-size:20px;color:var(--olive-dark);margin-top:0;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase}
+.color-circles{display:flex;justify-content:center;gap:35px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.color-item{display:flex;flex-direction:column;align-items:center;gap:8px}
+.circle{width:42px;height:42px;border-radius:50%;border:2px solid var(--line);box-shadow:0 4px 10px rgba(0,0,0,0.08)}
+.circle.olive{background:#78845b}
+.circle.grape{background:#6b3b52}
+.circle.white{background:#ffffff;border-color:#ccc}
+.color-item span{font-size:15px;color:var(--muted)}
+
+.playlist,.thankyou{max-width:780px;margin:auto;text-align:center;border:1px solid var(--line);background:var(--paper);padding:50px 36px;border-radius:6px;box-shadow:0 14px 35px rgba(78,88,57,0.06)}
+.playlist h3{font-size:32px;font-weight:400;color:var(--olive-dark);margin:14px 0}
+.spotify-btn{display:inline-block;margin-top:22px;padding:14px 28px;border-radius:30px;background:var(--olive-dark);color:#fff;text-decoration:none;font-size:16px;letter-spacing:1.5px;text-transform:uppercase;transition:background 0.2s}
+.spotify-btn:hover{background:#465234}
+
+.thankyou{background:#f3f4e9}
+.thankyou p{font-size:21px;line-height:1.7;color:var(--muted)}
+
+.footer{text-align:center;padding:60px 24px;border-top:1px solid var(--line);color:var(--muted);font-size:18px;position:relative;z-index:3}
+
+/* Pantalla de apertura y sobre 3D fluido */
+.intro-gate{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:#f8f6ed;padding:24px;transition:opacity 1s cubic-bezier(0.22,1,0.36,1),visibility 1s cubic-bezier(0.22,1,0.36,1)}
+.intro-gate.is-open{opacity:0;visibility:hidden;pointer-events:none}
+.intro-inner{display:flex;flex-direction:column;align-items:center;gap:30px;text-align:center;max-width:480px;width:100%}
+.envelope{width:min(320px,80vw);aspect-ratio:1.35;position:relative;filter:drop-shadow(0 20px 30px rgba(38,45,27,0.18));background:#68764c;border-radius:6px;overflow:hidden;perspective:1000px}
+.envelope:before{content:'';position:absolute;inset:0;background:#7c895f;clip-path:polygon(0 0,50% 58%,100% 0);z-index:2;transform-origin:top;transition:transform 0.8s cubic-bezier(0.4,0,0.2,1)}
+.intro-gate.opening .envelope:before{transform:rotateX(180deg);opacity:0.8}
+.envelope:after{content:'';position:absolute;inset:0;background:#586542;clip-path:polygon(0 100%,0 0,50% 58%,100% 0,100% 100%);z-index:1}
+.envelope-back{position:absolute;inset:0;background:#65734a}
+.envelope-seal{position:absolute;z-index:4;left:50%;top:55%;transform:translate(-50%,-50%);width:86px;height:86px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 28%,#d6c49a,#a88d58 68%,#826b43);border:2px solid #d8c9a4;box-shadow:0 4px 12px rgba(52,61,39,0.35);color:#fff9e9;font-family:'Allura',cursive;font-size:26px;transition:all 0.6s ease}
+.intro-gate.opening .envelope-seal{transform:translate(-50%,-50%) scale(1.3);opacity:0}
+.open-btn{border:none;background:var(--olive-dark);color:#fffdf8;padding:16px 36px;border-radius:30px;font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;letter-spacing:1px;cursor:pointer;box-shadow:0 6px 20px rgba(88,101,66,0.3);transition:all 0.3s ease}
+.open-btn:hover{background:#465234;transform:translateY(-2px)}
+.intro-caption{font-family:'Allura',cursive;color:var(--olive-dark);font-size:36px;margin:0}
+
+/* Reproductor flotante discreto */
+.audio-player-float{position:fixed;bottom:24px;right:24px;z-index:999;background:var(--paper);border:1px solid var(--line);padding:10px 16px;border-radius:30px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 25px rgba(38,45,27,0.12);backdrop-filter:blur(6px)}
+.audio-btn{background:var(--olive-dark);border:none;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;display:grid;place-items:center;font-size:14px;transition:background 0.2s}
+.audio-btn:hover{background:#465234}
+.audio-info{font-size:14px;color:var(--olive-dark);letter-spacing:0.5px}
+.audio-waves{display:flex;gap:3px;align-items:flex-end;height:14px}
+.audio-waves span{width:3px;background:var(--gold);animation:wave 1.2s infinite ease-in-out}
+.audio-waves span:nth-child(2){animation-delay:0.2s}
+.audio-waves span:nth-child(3){animation-delay:0.4s}
+@keyframes wave{0%,100%{height:4px}50%{height:14px}}
+
+@media(max-width:768px){
+  .cards{grid-template-columns:1fr}
+  .nav{gap:16px;overflow-x:auto;justify-content:flex-start;padding:14px 16px;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{white-space:nowrap;font-size:11px}
+  .olive-left,.olive-right{width:60px;opacity:0.25}
+}
+</style>
+</head>
+<body>
+<div class="olive-left"></div>
+<div class="olive-right"></div>
+
+<!-- Pantalla de inicio y sobre interactivo -->
+<div class="intro-gate" id="introGate">
+  <div class="intro-inner">
+    <p class="intro-caption">Una invitación especial para vos</p>
+    <div class="envelope" aria-label="Sobre verde oliva cerrado">
+      <div class="envelope-back"></div>
+      <div class="envelope-seal">M&amp;G</div>
+    </div>
+    <button class="open-btn" id="openInvitation" type="button">Abrir invitación</button>
+  </div>
+</div>
+
+<!-- Reproductor de audio flotante -->
+<div class="audio-player-float" id="audioFloat" style="display:none">
+  <button class="audio-btn" id="audioToggle" aria-label="Pausar o reproducir música">⏸</button>
+  <div style="display:flex;flex-direction:column">
+    <span class="audio-info">Es Tan Grande Este Amor</span>
+    <div class="audio-waves" id="audioWaves">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="Rodrigo Tapari - Es Tan Grande Este Amor (Video Oficial)(MP3_160K).mp3" type="audio/mpeg">
+</audio>
+
+<div id="app">
+  <header class="hero">
+    <div class="hero-content">
+      <div class="monogram">M <span class="amp">&</span> G</div>
+      <p class="welcome">Queremos que seas parte de nuestro gran día</p>
+      <div class="date-script">Sábado 13 de marzo del 2027</div>
+      <div class="wait">¡Los esperamos!</div>
+      <div class="confirm">Confirmar asistencia</div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <a href="#evento">El gran día</a>
+    <a href="#comida">Comida</a>
+    <a href="#dress">Dress code</a>
+    <a href="#playlist">Playlist</a>
+    <a href="#gracias">Gracias</a>
+  </nav>
+
+  <main>
+    <section class="section" id="evento">
+      <h2>El gran día</h2>
+      <p class="sub">Estos son los dos momentos y las ubicaciones para acompañarnos en este día tan especial.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">⛪</div>
+          <div class="label">18:00 hs · Ceremonia</div>
+          <h3>Iglesia Nuestra Señora del Tránsito</h3>
+          <p class="address">Nuestra Señora del Tránsito<br>Mendoza</p>
+          <a class="link" href="https://share.google/A1d9wXCtqVzZEQP7c" target="_blank" rel="noopener">Cómo llegar →</a>
